@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe 'ZohoCrm' do
+RSpec.describe ZohoCrm do
   describe '.config' do
     it 'yields the current configuration object' do
       yielded = nil
