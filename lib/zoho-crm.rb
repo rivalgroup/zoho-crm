@@ -22,3 +22,4 @@ end
 
 require 'logger'
 require 'zoho-crm/configuration'
+require 'zoho-crm/model'
