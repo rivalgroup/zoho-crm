@@ -14,14 +14,14 @@ RSpec.describe ZohoCrm::Model do
     expect(model.respond_to?('MyCustomModelName')).to be_truthy
   end
 
-  it 'initializes with property assigment' do
+  it 'initializes with property assignment' do
     model_class.property :model_name, as: 'MyCustomModelName'
     model = model_class.new(model_name: 'MyModelName')
 
     expect(model.model_name).to eq('MyModelName')
   end
 
-  it 'initializes with property alias assigment' do
+  it 'initializes with property alias assignment' do
     model_class.property :model_name, as: 'MyCustomModelName'
     model = model_class.new(MyCustomModelName: 'MyModelName')
 
