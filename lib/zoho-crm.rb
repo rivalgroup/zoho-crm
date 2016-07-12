@@ -23,3 +23,6 @@ end
 require 'logger'
 require 'zoho-crm/configuration'
 require 'zoho-crm/model'
+require 'zoho-crm/adapters/api'
+require 'zoho-crm/adapters/record'
+require 'zoho-crm/adapters/user'

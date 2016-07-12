@@ -1,0 +1,32 @@
+{
+  "response":{
+    "result":{
+      "message":"Record(s) updated successfully",
+      "recorddetail":{
+        "FL":[
+          {
+            "content":"1",
+            "val":"Id"
+          },
+          {
+            "content":"2016-07-12 10:21:55",
+            "val":"Created Time"
+          },
+          {
+            "content":"2016-07-12 11:09:24",
+            "val":"Modified Time"
+          },
+          {
+            "content":"Alexandre L3",
+            "val":"Created By"
+          },
+          {
+            "content":"Alexandre L3",
+            "val":"Modified By"
+          }
+        ]
+      }
+    },
+    "uri":"/crm/private/json/Potentials/updateRecords"
+  }
+}

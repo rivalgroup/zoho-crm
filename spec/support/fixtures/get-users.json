@@ -1,0 +1,27 @@
+{
+   "users":{
+      "user":[
+         {
+            "zip":"00000000",
+            "phone":"12312313213",
+            "fax":"null",
+            "status":"active",
+            "website":"null",
+            "street":"null",
+            "state":"null",
+            "city":"null",
+            "country":"null",
+            "content":"Zoho User",
+            "id":"1",
+            "timezone":"America/Sao Paulo",
+            "zuid":"123456789",
+            "email":"zoho@crm.com",
+            "role":"CEO",
+            "language":"en_US",
+            "confirm":"true",
+            "profile":"Administrator",
+            "mobile":"null"
+         }
+      ]
+   }
+}
