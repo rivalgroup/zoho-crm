@@ -32,23 +32,13 @@ module ZohoCrm::Adapters
 
     def perform_get(url)
       RestClient.get(url) do |response, request, result, &block|
-        log_request(request, response)
-
-        body = JSON.parse(response.body)
-        raise RestClient::Exception.new(response) if body.dig('response', 'error')
-
-        body
+        build_response(request, response)
       end
     end
 
     def perform_post(url, data = {})
-      RestClient.post(url, data) do |response, request, result, &block|
-        log_request(request, response)
-
-        body = JSON.parse(response.body)
-        raise RestClient::Exception.new(response) if body.dig('response', 'error')
-
-        body
+      RestClient.post(url, data) do |response, request|
+        build_response(request, response)
       end
     end
 
@@ -56,12 +46,8 @@ module ZohoCrm::Adapters
 
     def url(module_name, method, params = {})
       uri = URI.parse("#{config.url}/json/#{module_name}/#{method}")
-      uri.query = params_to_query(default_params.merge(params))
+      uri.query = URI.encode_www_form(default_params.merge(params))
       uri.to_s
-    end
-
-    def params_to_query(params)
-      params.map { |param, value| "#{param}=#{URI.escape(value.to_s)}" }.join('&')
     end
 
     def default_params
@@ -77,6 +63,15 @@ module ZohoCrm::Adapters
       ZohoCrm.logger.info "# RESPONSE => #{response.code} - #{response.headers}"
 
       ZohoCrm.logger.debug "# RESPONSE Body => #{response.body}"
+    end
+
+    def build_response(request, response)
+      log_request(request, response)
+
+      body = JSON.parse(response.body)
+      raise RestClient::Exception.new(response) if body.dig('response', 'error')
+
+      body
     end
   end
 end
