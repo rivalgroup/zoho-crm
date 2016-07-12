@@ -54,5 +54,13 @@ module ZohoCrm
 
       Hash[properties.map { |property| [property, public_send(property)] }]
     end
+
+    def update(attributes = {})
+      attributes.each do |attribute, value|
+        public_send("#{attribute}=", value) if respond_to?(attribute)
+      end
+
+      self
+    end
   end
 end
