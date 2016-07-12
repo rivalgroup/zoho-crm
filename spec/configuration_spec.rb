@@ -3,10 +3,10 @@ require 'spec_helper'
 describe ZohoCrm::Configuration do
   it 'configures the gem using values from configuration file' do
     configuration = ZohoCrm::Configuration.new
-    configuration.config_file_path = 'spec/fixtures/configuration.yml'
+    configuration.config_file_path = 'spec/support/fixtures/configuration.yml'
     configuration.environment = 'test'
 
-    expect(configuration.config_file_path).to eq('spec/fixtures/configuration.yml')
+    expect(configuration.config_file_path).to eq('spec/support/fixtures/configuration.yml')
     expect(configuration.environment).to eq('test')
     expect(configuration.url).to eq('https://crm.zoho.com/crm/private')
     expect(configuration.authtoken).to eq('my-zoho-auth-token')
@@ -36,7 +36,7 @@ describe ZohoCrm::Configuration do
   context 'when the config file has ERB blocks' do
     it 'processes the ERB code before parsing the configuration' do
       configuration = ZohoCrm::Configuration.new
-      configuration.config_file_path = 'spec/fixtures/configuration.yml'
+      configuration.config_file_path = 'spec/support/fixtures/configuration.yml'
       configuration.environment = 'production'
 
       ENV['ZOHO_AUTH_TOKEN'] = 'AUTH_TOKEN_SET_THROUGH_ENV'
