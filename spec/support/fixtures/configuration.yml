@@ -1,0 +1,5 @@
+test:
+  url: 'https://crm.zoho.com/crm/private'
+  authtoken: 'my-zoho-auth-token'
+production:
+  authtoken: <%= ENV["ZOHO_AUTH_TOKEN"] %>

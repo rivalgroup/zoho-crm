@@ -1,0 +1,126 @@
+{
+  "response":{
+    "result":{
+      "MyModule":{
+        "row":[
+          {
+            "no":"1",
+            "FL":[
+              {
+                "content":"1",
+                "val":"ID"
+              },
+              {
+
+                "content":"1982217000000174050",
+                "val":"SMOWNERID"
+              },
+              {
+                "content":"Alexandre Santos",
+                "val":"Potential Owner"
+              },
+              {
+                "content":"0",
+                "val":"Amount"
+              },
+              {
+                "content":"x",
+                "val":"Potential Name"
+              },
+              {
+                "content":"0",
+                "val":"Probability"
+              },
+              {
+                "content":"1982217000000099187",
+                "val":"SMCREATORID"
+              },
+              {
+                "content":"Alexandre L3",
+                "val":"Created By"
+              },
+              {
+                "content":"1982217000000099187",
+                "val":"MODIFIEDBY"
+              },
+              {
+                "content":"Alexandre L3",
+                "val":"Modified By"
+              },
+              {
+                "content":"2016-07-07 11:53:17",
+                "val":"Created Time"
+              },
+              {
+                "content":"2016-07-07 11:53:17",
+                "val":"Modified Time"
+              },
+              {
+                "content":"2016-07-07 11:47:16",
+                "val":"Last Activity Time"
+              }
+            ]
+          },
+          {
+            "no":"2",
+            "FL":[
+              {
+                "content":"2",
+                "val":"ID"
+              },
+              {
+                "content":"1982217000000099187",
+                "val":"SMOWNERID"
+              },
+              {
+                "content":"Alexandre L3",
+                "val":"Potential Owner"
+              },
+              {
+                "content":"0",
+                "val":"Amount"
+              },
+              {
+                "content":"Teste",
+                "val":"Potential Name"
+              },
+              {
+                "content":"0",
+                "val":"Probability"
+              },
+              {
+                "content":"1982217000000099187",
+                "val":"SMCREATORID"
+              },
+              {
+                "content":"Alexandre L3",
+                "val":"Created By"
+              },
+              {
+                "content":"1982217000000099187",
+                "val":"MODIFIEDBY"
+              },
+              {
+                "content":"Alexandre L3",
+                "val":"Modified By"
+              },
+              {
+                "content":"2016-07-07 11:45:06",
+                "val":"Created Time"
+              },
+              {
+                "content":"2016-07-07 11:45:06",
+                "val":"Modified Time"
+              },
+              {
+                "content":"2016-07-07 11:45:06",
+                "val":"Last Activity Time"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "uri":"/crm/private/json/Potentials/getRecords"
+  }
+}
