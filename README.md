@@ -51,7 +51,7 @@ So far, the record repository represents the following api methods:
 - [searchRecords](https://www.zoho.com/crm/help/api/searchrecords.html)
 
 
-The repository should include ```ZohoCrm::Repositories::Record``` and associate your model using ```model``` method.
+The repository should include ```ZohoCrm::Repositories::Records``` and associate your model using ```model``` method.
 
 ```ruby
 class MyLeadRepository
