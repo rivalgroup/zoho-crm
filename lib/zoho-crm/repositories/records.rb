@@ -20,9 +20,7 @@ module ZohoCrm
         end
 
         def adapter
-          @adapter = ZohoCrm::Adapters::Record.new(@model_class.module_name) unless @adapter
-
-          @adapter
+          @adapter ||= ZohoCrm::Adapters::Record.new(@model_class.module_name)
         end
       end
 
