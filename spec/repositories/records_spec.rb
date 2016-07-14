@@ -18,12 +18,12 @@ describe ZohoCrm::Repositories::Records do
 
   describe 'finding a record' do
     it 'delegates to adapter' do
-      adapter = double
+      adapter = spy('adapter')
       repository_class.adapter = adapter
 
-      expect(adapter).to receive(:get_record).with(1)
+      repository_class.new.find(1)
 
-      result = repository_class.new.find(1)
+      expect(adapter).to have_received(:get_record).with(1)
     end
   end
 
