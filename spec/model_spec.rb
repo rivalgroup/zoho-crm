@@ -74,7 +74,7 @@ RSpec.describe ZohoCrm::Model do
     model_class.property :model_name, as: 'MyCustomModelName'
     model = model_class.new(model_name: 'MyModelName')
 
-    model.update({ model_name: 'updated', some_property: 'update somer property' })
+    model.update({ model_name: 'updated', some_property: 'update some property' })
 
     expect(model.model_name).to eq('updated')
   end

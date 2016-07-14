@@ -17,22 +17,13 @@ describe ZohoCrm::Repositories::Records do
   end
 
   describe 'finding a record' do
-    it 'finds a record' do
+    it 'delegates to adapter' do
       adapter = double
       repository_class.adapter = adapter
-      allow(adapter).to receive(:get_record) { { id: 1 } }
+
+      expect(adapter).to receive(:get_record).with(1)
 
       result = repository_class.new.find(1)
-      expect(result.id).to eq(1)
-    end
-
-    it 'returns nil for inexistent record' do
-      adapter = double
-      repository_class.adapter = adapter
-      allow(adapter).to receive(:get_record) { nil }
-
-      result = repository_class.new.find(1)
-      expect(result).to be_nil
     end
   end
 
@@ -77,42 +68,40 @@ describe ZohoCrm::Repositories::Records do
   describe 'searching' do
     context 'with conditions' do
       it 'fetches data by criteria' do
-        adapter = double
+        adapter = spy('adapter')
         repository_class.adapter = adapter
 
         repo = repository_class.new
         repo.select(:id).from(0).to(10).order(:id, :asc).where(id: 1)
 
-        expect(adapter).to receive(:search_records).with({
+        result = repo.fetch
+        
+        expect(adapter).to have_received(:search_records).with({
           "selectColumns" => "MyModule(ID)",
           "fromIndex" => 0,
           "toIndex" => 10,
           "sortColumnString" => "ID",
           "sortOrderString" => "asc",
           "criteria"=>"((ID:1))"
-        }) { [{ id: 1 }] }
-
-        result = repo.fetch
-        expect(result.first.id).to eq(1)
+        })
       end
 
-      it 'fetches data wihtout' do
-        adapter = double
+      it 'fetches data without' do
+        adapter = spy('adapter')
         repository_class.adapter = adapter
 
         repo = repository_class.new
         repo.select(:id).from(0).to(5).order(:id, :asc)
 
-        expect(adapter).to receive(:get_records).with({
+        result = repo.fetch
+
+        expect(adapter).to have_received(:get_records).with({
           "selectColumns" => "MyModule(ID)",
           "fromIndex" => 0,
           "toIndex" => 5,
           "sortColumnString" => "ID",
           "sortOrderString" => "asc"
         }) { [{ id: 1 }] }
-
-        result = repo.fetch
-        expect(result.first.id).to eq(1)
       end
     end
 
@@ -126,7 +115,7 @@ describe ZohoCrm::Repositories::Records do
         expect(repo.first).to eq(records.first)
       end
 
-      it 'fetches though #to_a' do
+      it 'fetches through #to_a' do
         repo = repository_class.new
         expect(repo.method(:to_a)).to eq(repo.method(:fetch))
       end
