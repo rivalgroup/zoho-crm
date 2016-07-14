@@ -1,10 +1,10 @@
 Zoho::Crm
-=====
+=========
 
 Wrapping zoho crm resources with class
 
 Installation
--------
+------------
 
 Add this line to your application's Gemfile:
 
@@ -16,12 +16,12 @@ And then execute:
 
     $ bundle
 
-    Or install it yourself as:
+Or install it yourself as:
 
-        $ gem install zoho-crm
+    $ gem install zoho-crm
 
-        How to use
-        ------
+How to use
+----------
 
 ### Model
 
@@ -31,14 +31,14 @@ Your model should include ```ZohoCrm::Model``` to represent the resource, use th
 class MyLead
   include ZohoCrm::Model
 
-    custom_module_name 'Leads'
+  custom_module_name 'Leads'
 
-      property :first_name, as: 'First Name'
-        property :last_name, as: 'Last Name'
-        end
-        ```
+  property :first_name, as: 'First Name'
+  property :last_name, as: 'Last Name'
+end
+```
 
-        The ```as:``` option on property should be used to map the field name on Zoho CRM resource.
+The ```as:``` option on property should be used to map the field name on Zoho CRM resource.
 
 ### Record Repository
 
@@ -56,10 +56,10 @@ The repository should include ```ZohoCrm::Repositories::Record``` and associate 
 ```ruby
 class MyLeadRepository
   include ZohoCrm::Repository::Records
-    
-      model MyLead
-      end
-      ```
+  
+  model MyLead
+end
+```
 
 #### Find record
 ```ruby
