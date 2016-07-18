@@ -66,43 +66,41 @@ describe ZohoCrm::Repositories::Records do
   end
 
   describe 'searching' do
-    context 'with conditions' do
-      it 'fetches data by criteria' do
-        adapter = spy('adapter')
-        repository_class.adapter = adapter
+    it 'fetches data by criteria' do
+      adapter = spy('adapter')
+      repository_class.adapter = adapter
 
-        repo = repository_class.new
-        repo.select(:id).from(0).to(10).order(:id, :asc).where(id: 1)
+      repo = repository_class.new
+      repo.select(:id).from(0).to(10).order(:id, :asc).where(id: 1)
 
-        result = repo.fetch
-        
-        expect(adapter).to have_received(:search_records).with({
-          "selectColumns" => "MyModule(ID)",
-          "fromIndex" => 0,
-          "toIndex" => 10,
-          "sortColumnString" => "ID",
-          "sortOrderString" => "asc",
-          "criteria"=>"((ID:1))"
-        })
-      end
+      result = repo.fetch
 
-      it 'fetches data without' do
-        adapter = spy('adapter')
-        repository_class.adapter = adapter
+      expect(adapter).to have_received(:search_records).with({
+        "selectColumns" => "MyModule(ID)",
+        "fromIndex" => 0,
+        "toIndex" => 10,
+        "sortColumnString" => "ID",
+        "sortOrderString" => "asc",
+        "criteria"=>"((ID:1))"
+      })
+    end
 
-        repo = repository_class.new
-        repo.select(:id).from(0).to(5).order(:id, :asc)
+    it 'fetches data without criteria' do
+      adapter = spy('adapter')
+      repository_class.adapter = adapter
 
-        result = repo.fetch
+      repo = repository_class.new
+      repo.select(:id).from(0).to(5).order(:id, :asc)
 
-        expect(adapter).to have_received(:get_records).with({
-          "selectColumns" => "MyModule(ID)",
-          "fromIndex" => 0,
-          "toIndex" => 5,
-          "sortColumnString" => "ID",
-          "sortOrderString" => "asc"
-        }) { [{ id: 1 }] }
-      end
+      result = repo.fetch
+
+      expect(adapter).to have_received(:get_records).with({
+        "selectColumns" => "MyModule(ID)",
+        "fromIndex" => 0,
+        "toIndex" => 5,
+        "sortColumnString" => "ID",
+        "sortOrderString" => "asc"
+      }) { [{ id: 1 }] }
     end
 
     context 'aliases' do
