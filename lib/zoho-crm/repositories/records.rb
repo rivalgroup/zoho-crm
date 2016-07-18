@@ -40,27 +40,29 @@ module ZohoCrm
         def select(*columns)
           return if Array(columns).empty?
 
-          select_columns = columns.map { |column| model_class.property_aliases[column] }
-          conditions[:select_columns] = "#{model_class.module_name}(#{select_columns.join(',')})" if select_columns
+          select_columns = columns.map { |column| model_class.property_aliases[column] }.compact
+          conditions[:select_columns] = "#{model_class.module_name}(#{select_columns.join(',')})" unless select_columns.empty?
 
           self
         end
 
         def from(index)
-          conditions[:from_index] = index
+          conditions[:from_index] = index if index.is_a?(Fixnum)
 
           self
         end
 
         def to(index)
-          conditions[:to_index] = index
+          conditions[:to_index] = index if index.is_a?(Fixnum)
 
           self
         end
 
         def order(sort_column, order = :asc)
-          conditions[:sort_column] = model_class.property_aliases[sort_column]
-          conditions[:order] = order.to_s
+          if sort_column = model_class.property_aliases[sort_column]
+            conditions[:sort_column] = sort_column
+            conditions[:order] = order.to_s
+          end
 
           self
         end
@@ -120,11 +122,11 @@ module ZohoCrm
           clear_conditions!
         end
 
+        alias to_a fetch
+
         def first
           fetch.first
         end
-
-        alias to_a fetch
 
         private
 
