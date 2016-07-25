@@ -28,7 +28,6 @@ Create a config/zoho-crm.yml with a url and authtoken for each environment.
 development:
   url: 'https://crm.zoho.com/crm/private'
   authtoken: <%= ENV["ZOHO_AUTH_TOKEN"] %>
-
 ```
 
 How to use
