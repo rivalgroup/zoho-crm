@@ -20,6 +20,16 @@ Or install it yourself as:
 
     $ gem install zoho-crm
 
+Configuration
+----------
+Create a config/zoho-crm.yml with a url and authtoken for each environment.
+
+```ruby
+development:
+  url: 'https://crm.zoho.com/crm/private'
+  authtoken: <%= ENV["ZOHO_AUTH_TOKEN"] %>
+```
+
 How to use
 ----------
 
@@ -55,8 +65,8 @@ The repository should include ```ZohoCrm::Repositories::Records``` and associate
 
 ```ruby
 class MyLeadRepository
-  include ZohoCrm::Repository::Records
-  
+  include ZohoCrm::Repositories::Records
+
   model MyLead
 end
 ```
