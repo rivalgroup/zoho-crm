@@ -70,6 +70,15 @@ RSpec.describe ZohoCrm::Model do
     expect(model.to_h(aliases: true)).to eq('MyCustomModelName' => 'MyModelName')
   end
 
+  it 'updates model attributes' do
+    model_class.property :model_name, as: 'MyCustomModelName'
+    model = model_class.new(model_name: 'MyModelName')
+
+    model.update({ model_name: 'updated', some_property: 'update some property' })
+
+    expect(model.model_name).to eq('updated')
+  end
+
   def model_class
     @model_class ||= Class.new do
       include ZohoCrm::Model
