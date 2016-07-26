@@ -20,8 +20,8 @@ module ZohoCrm::Adapters
       return parse_records(body)
     end
 
-    def search_records(criteria, params = {})
-      body = perform_get(search_records_url(@module_name, params.merge(criteria: criteria)))
+    def search_records(params = {})
+      body = perform_get(search_records_url(@module_name, params))
 
       return parse_records(body)
     end

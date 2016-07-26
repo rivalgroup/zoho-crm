@@ -31,7 +31,7 @@ RSpec.describe ZohoCrm::Adapters::Record do
     allow(adapter).to receive(:search_records_url).with('MyModule', { criteria: criteria }) { 'search-records-url' }
     allow(adapter).to receive(:perform_get) { JSON.parse(fixture('search-records.json')) }
 
-    results = adapter.search_records(criteria)
+    results = adapter.search_records({ criteria: criteria })
     expect(results.size).to be(2)
     expect(results.map { |result| result['ID'] }).to eq(['1', '2'])
   end
