@@ -43,6 +43,8 @@ module ZohoCrm
     end
 
     def initialize(attributes = {})
+      puts __LINE__
+      puts attributes.inspect
       attributes.each do |attribute, value|
         method_name = "#{attribute}="
         public_send(method_name, value) if respond_to?(method_name)

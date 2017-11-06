@@ -69,6 +69,8 @@ module ZohoCrm::Adapters
       log_request(request, response)
 
       body = JSON.parse(response.body)
+      puts __LINE__
+      puts body.inspect
       raise RestClient::Exception.new(response) if body.dig('response', 'error')
 
       body
