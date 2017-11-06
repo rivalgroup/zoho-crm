@@ -37,6 +37,8 @@ module ZohoCrm::Adapters
     end
 
     def perform_post(url, data = {})
+      puts __LINE__
+      puts data.inspect
       RestClient.post(url, data) do |response, request|
         build_response(request, response)
       end
