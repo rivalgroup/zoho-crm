@@ -53,7 +53,12 @@ module ZohoCrm::Adapters
     end
 
     def default_params
-      @default_params ||= { "newFormat" => 1, scope: 'crmapi', authtoken: config.authtoken }
+      @default_params ||= {
+          :newFormat => 1,
+          :scope => 'crmapi',
+          :authtoken => config.authtoken,
+          :wfTrigger => 'true'
+      }
     end
 
     def config
