@@ -7,7 +7,7 @@ module ZohoCrm::Adapters
     end
 
     def update_records_url(module_name)
-      @insert_records_url ||= url(module_name, 'updateRecords')
+      @update_records_url ||= url(module_name, 'updateRecords')
     end
 
     def get_records_url(module_name, params = {})
@@ -37,7 +37,7 @@ module ZohoCrm::Adapters
     end
 
     def perform_post(url, data = {})
-      puts __LINE__
+      puts '____api#perform_post____'
       puts data.inspect
       RestClient.post(url, data) do |response, request|
         build_response(request, response)
@@ -76,8 +76,9 @@ module ZohoCrm::Adapters
       log_request(request, response)
 
       body = JSON.parse(response.body)
-      puts __LINE__
+      puts '____api#build_response.request____'
       puts request.inspect
+      puts '____api#build_response.body____'
       puts body.inspect
       raise RestClient::Exception.new(response) if body.dig('response', 'error')
 

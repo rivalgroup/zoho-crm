@@ -43,7 +43,7 @@ module ZohoCrm
     end
 
     def initialize(attributes = {})
-      puts __LINE__
+      puts '____modal#intialize____'
       puts attributes.inspect
       attributes.each do |attribute, value|
         method_name = "#{attribute}="
