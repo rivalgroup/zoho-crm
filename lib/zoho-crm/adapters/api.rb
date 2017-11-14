@@ -7,7 +7,7 @@ module ZohoCrm::Adapters
     end
 
     def update_records_url(module_name)
-      @insert_records_url ||= url(module_name, 'updateRecords')
+      @update_records_url ||= url(module_name, 'updateRecords')
     end
 
     def get_records_url(module_name, params = {})
