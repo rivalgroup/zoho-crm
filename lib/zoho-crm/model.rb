@@ -32,7 +32,7 @@ module ZohoCrm
           property_aliases[property_name] = options[:as]
 
           define_method("#{options[:as]}=") do |val|
-            self.instance_variable_set("@#{property_name}", val)
+            self.instance_variable_set("@#{property_name}", val.is_a?(String) ? val.encode(:xml => :text) : val)
           end
 
           define_method("#{options[:as]}") do
@@ -43,7 +43,7 @@ module ZohoCrm
     end
 
     def initialize(attributes = {})
-      puts '____modal#intialize____'
+      puts '____model#intialize____'
       puts attributes.inspect
       attributes.each do |attribute, value|
         method_name = "#{attribute}="
