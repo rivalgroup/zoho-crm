@@ -47,7 +47,7 @@ module ZohoCrm
       puts attributes.inspect
       attributes.each do |attribute, value|
         method_name = "#{attribute}="
-        public_send(method_name, value) if respond_to?(method_name)
+        public_send(method_name, value.is_a?(String) ? value.encode(:xml => :text) : value) if respond_to?(method_name)
       end
     end
 
